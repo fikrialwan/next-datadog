@@ -5,6 +5,12 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@datadog/browser-logs':
+    specifier: ^5.23.3
+    version: 5.23.3(@datadog/browser-rum@5.23.3)
+  '@datadog/browser-rum':
+    specifier: ^5.23.3
+    version: 5.23.3(@datadog/browser-logs@5.23.3)
   next:
     specifier: 14.2.5
     version: 14.2.5(react-dom@18.3.1)(react@18.3.1)
@@ -47,6 +53,41 @@ packages:
     resolution: {integrity: sha512-UrcABB+4bUrFABwbluTIBErXwvbsU/V7TZWfmbgJfbkwiBuziS9gxdODUyuiecfdGQ85jglMW6juS3+z5TsKLw==}
     engines: {node: '>=10'}
     dev: true
+
+  /@datadog/browser-core@5.23.3:
+    resolution: {integrity: sha512-WaVJfTIHqU1m6voRlxVOEPXBBjHzr/ygE8tYTQRIVCWo7w/3yGOpc6dqlclHM/dpAHBVJ/L8/rQZLp0FoOAmOA==}
+    dev: false
+
+  /@datadog/browser-logs@5.23.3(@datadog/browser-rum@5.23.3):
+    resolution: {integrity: sha512-OGUDn0KVnfWwIv8gK8q6D7Z1U2XFekKVYcqrq8UXnHM+mznn/j31I3Z/FAUuBNsk/Xr3U70OZw1QtFQTB69fng==}
+    peerDependencies:
+      '@datadog/browser-rum': 5.23.3
+    peerDependenciesMeta:
+      '@datadog/browser-rum':
+        optional: true
+    dependencies:
+      '@datadog/browser-core': 5.23.3
+      '@datadog/browser-rum': 5.23.3(@datadog/browser-logs@5.23.3)
+    dev: false
+
+  /@datadog/browser-rum-core@5.23.3:
+    resolution: {integrity: sha512-kJBbRCttzSwUe4T6Hz2swhnX1V9uhmmkxuRY7hE1JExsii8Ub9VSILIXQ9EkkwRm+Ax2/BxJAgsAscSzF+wqFQ==}
+    dependencies:
+      '@datadog/browser-core': 5.23.3
+    dev: false
+
+  /@datadog/browser-rum@5.23.3(@datadog/browser-logs@5.23.3):
+    resolution: {integrity: sha512-T8tt3M0muq3Wwm6RzAZFnOM1xoXo/fY4vJPMCexgyO/SSxl39p9UkkGn8K5Dq1Ry8XQQnf3XoO9IJvfcFVo7ew==}
+    peerDependencies:
+      '@datadog/browser-logs': 5.23.3
+    peerDependenciesMeta:
+      '@datadog/browser-logs':
+        optional: true
+    dependencies:
+      '@datadog/browser-core': 5.23.3
+      '@datadog/browser-logs': 5.23.3(@datadog/browser-rum@5.23.3)
+      '@datadog/browser-rum-core': 5.23.3
+    dev: false
 
   /@eslint-community/eslint-utils@4.4.0(eslint@8.57.0):
     resolution: {integrity: sha512-1/sA4dwrzBAyeUoQ6oxahHKmrZvsnLCg4RfxW3ZFGGmQkSNQPFNLV9CUEFQP1x9EYXHTo5p6xdhZM1Ne9p/AfA==}
