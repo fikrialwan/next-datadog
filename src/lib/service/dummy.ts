@@ -8,4 +8,4 @@ export const getAllData = () =>
 export const getAllDataWithDelay = () =>
   fetch("https://jsonplaceholder.typicode.com/todos")
     .then((response) => response.json())
-    .then(sleep(10000));
+    .then(sleep(100000));
