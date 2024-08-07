@@ -27,6 +27,8 @@ datadogRum.init({
 datadogLogs.init({
   clientToken: CONFIG.CLIENT_TOKEN,
   site: CONFIG.SITE,
+  service: CONFIG.SERVICE,
+  env: CONFIG.ENV,
   forwardErrorsToLogs: true,
   sessionSampleRate: 100,
 });
