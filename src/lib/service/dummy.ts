@@ -34,6 +34,37 @@ export const postDataWithLog = () =>
       )
     );
 
+export const submitErrorDataWithLog = (title: string) =>
+  fetch("https://jsonplaceholde.typicode.com/todos", {
+    method: "POST",
+    body: JSON.stringify({
+      title,
+    }),
+  })
+    .then((response) => response.json())
+    .catch((error) =>
+      datadogLogs.logger.error(
+        "Error Fetching" +
+          JSON.stringify({
+            url: "https://jsonplaceholde.typicode.com/todos",
+            method: "POST",
+            message: error.message,
+            body: {
+              title,
+            },
+          }),
+        {
+          url: "https://jsonplaceholde.typicode.com/todos",
+          method: "POST",
+          message: error.message,
+          body: {
+            title,
+          },
+        },
+        error
+      )
+    );
+
 export const getById = (id: string) =>
   fetch("https://jsonplaceholder.typicode.com/todos/" + id).then((response) =>
     response.json()
