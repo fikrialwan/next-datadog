@@ -14,3 +14,8 @@ export const postData = () =>
   fetch("https://jsonplaceholde.typicode.com/todos", {
     method: "POST",
   }).then((response) => response.json());
+
+export const getById = (id: string) =>
+  fetch("https://jsonplaceholder.typicode.com/todos/" + id).then((response) =>
+    response.json()
+  );

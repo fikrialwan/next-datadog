@@ -1,5 +1,6 @@
 "use client";
 
+import { datadogLogs } from "@datadog/browser-logs";
 import { datadogRum } from "@datadog/browser-rum";
 import { CONFIG } from "~/lib/utils/config";
 
@@ -21,6 +22,13 @@ datadogRum.init({
   allowedTracingUrls: [
     { match: "https://example.com/api/", propagatorTypes: ["tracecontext"] },
   ],
+});
+
+datadogLogs.init({
+  clientToken: CONFIG.CLIENT_TOKEN,
+  site: CONFIG.SITE,
+  forwardErrorsToLogs: true,
+  sessionSampleRate: 100,
 });
 
 export default function DatadogInit() {
